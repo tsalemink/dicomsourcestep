@@ -3,7 +3,7 @@ import os
 from glob import glob
 import dicom.contrib.pydicom_series as dicomSeries
 try:
-    from gias.image_analysis import image_tools
+    from gias2.image_analysis import image_tools
 except ImportError:
     HAS_GIAS = False
 else:
