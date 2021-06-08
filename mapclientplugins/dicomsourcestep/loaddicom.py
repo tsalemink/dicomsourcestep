@@ -1,7 +1,7 @@
-
 import os
 from glob import glob
 import dicom.contrib.pydicom_series as dicomSeries
+
 try:
     from gias2.image_analysis import image_tools
 except ImportError:
@@ -9,13 +9,14 @@ except ImportError:
 else:
     HAS_GIAS = True
 
+
 def _get_files(path, pattern='*'):
-    
     files = sorted(glob(os.path.join(path, pattern)))
-    if len(files)==0:
+    if len(files) == 0:
         raise IOError('No files found')
     else:
         return files
+
 
 class DicomLoader(object):
 
@@ -38,14 +39,14 @@ class DicomLoader(object):
 
     def _make_scan(self):
         self.scan = image_tools.Scan(self.stack.description)
-        I = self.stack.get_pixel_array().transpose([2,1,0])
+        I = self.stack.get_pixel_array().transpose([2, 1, 0])
         voxel_spacing = self.stack.sampling[::-1]
         voxel_origin = [float(i) for i in self.stack.info.ImagePositionPatient]
         self.scan.setImageArray(
             I,
-            voxel_spacing, 
+            voxel_spacing,
             voxel_origin,
-            )
+        )
 
     def get_stack(self):
         return self.stack

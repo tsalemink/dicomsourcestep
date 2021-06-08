@@ -1,4 +1,3 @@
-
 '''
 MAP Client Plugin Step
 '''
@@ -18,7 +17,7 @@ class DicomSourceStep(WorkflowStepMountPoint):
 
     def __init__(self, location):
         super(DicomSourceStep, self).__init__('Dicom Source', location)
-        self._configured = False # A step cannot be executed until it has been configured.
+        self._configured = False  # A step cannot be executed until it has been configured.
         self._category = 'Source'
         # Add any other initialisation code here:
         # Ports:
@@ -53,12 +52,12 @@ class DicomSourceStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         provides port for this step then the index can be ignored.
         '''
-        if index==0:
-            return self._source.get_image_array() # image-array
-        elif index==1:
-            return self._source.get_stack() # dicom-stack
+        if index == 0:
+            return self._source.get_image_array()  # image-array
+        elif index == 1:
+            return self._source.get_stack()  # dicom-stack
         else:
-            return self._source.get_scan() # gias-scan
+            return self._source.get_scan()  # gias-scan
 
     def configure(self):
         '''
@@ -73,10 +72,10 @@ class DicomSourceStep(WorkflowStepMountPoint):
         dlg.setConfig(self._config)
         dlg.validate()
         dlg.setModal(True)
-        
+
         if dlg.exec_():
             self._config = dlg.getConfig()
-        
+
         self._configured = dlg.validate()
         self._configuredObserver()
 
@@ -110,6 +109,3 @@ class DicomSourceStep(WorkflowStepMountPoint):
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
-
-
-
