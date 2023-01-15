@@ -6,4 +6,4 @@ Outputs:
 2) the Pydicom Stack instance
 3) the stack as a GIAS Scan instance if GIAS is installed 
 
-Requires Pydicom and optionally https://bitbucket.org/jangle/gias
+Requires Pydicom and optionally https://github.com/musculoskeletal/gias3.image_analysis
