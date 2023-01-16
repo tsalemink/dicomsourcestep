@@ -3,9 +3,6 @@
 MAP Client Plugin Step
 '''
 import json
-import os
-
-from PySide import QtGui
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.dicomsourcestep.configuredialog import ConfigureDialog
