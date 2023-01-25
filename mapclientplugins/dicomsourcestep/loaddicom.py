@@ -1,7 +1,7 @@
 
 import os
 from glob import glob
-import dicom.contrib.pydicom_series as dicomSeries
+from mapclientplugins.dicomsourcestep import pydicom_series as dicomSeries
 try:
     from gias3.image_analysis import image_tools
 except ImportError:
