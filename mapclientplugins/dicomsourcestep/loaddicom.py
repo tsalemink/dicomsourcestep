@@ -9,13 +9,15 @@ except ImportError:
 else:
     HAS_GIAS = True
 
+
 def _get_files(path, pattern='*'):
     
     files = sorted(glob(os.path.join(path, pattern)))
-    if len(files)==0:
+    if len(files) == 0:
         raise IOError('No files found')
     else:
         return files
+
 
 class DicomLoader(object):
 
@@ -38,11 +40,11 @@ class DicomLoader(object):
 
     def _make_scan(self):
         self.scan = image_tools.Scan(self.stack.description)
-        I = self.stack.get_pixel_array().transpose([2,1,0])
+        image_array = self.stack.get_pixel_array().transpose([2, 1, 0])
         voxel_spacing = self.stack.sampling[::-1]
         voxel_origin = [float(i) for i in self.stack.info.ImagePositionPatient]
         self.scan.setImageArray(
-            I,
+            image_array,
             voxel_spacing, 
             voxel_origin,
             )
